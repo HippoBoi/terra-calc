@@ -36,12 +36,24 @@ const BossHealth = () => {
             setError("Select difficulty!");
             return;
         }
-        else if (players <= 1) {
+        else if (players < 1) {
             setError("Select the amount of players!");
             return;
         }
         
-        setBossHealth(bosses[boss].health);
+        switch(difficulty) {
+            case "classic":
+                setBossHealth(bosses[boss].health);
+            break;
+
+            case "expert":
+                setBossHealth(bosses[boss].healthExpert);
+            break;
+
+            case "master":
+                setBossHealth(bosses[boss].healthMaster);
+            break;
+        }
     }
 
     useEffect(() => {

@@ -6,10 +6,9 @@ import moon from '../assets/images/dasdasdsao.webp'
 import caveBg from "../assets/images/caveBg.webp"
 import { HStack, VStack, Text } from '@chakra-ui/react'
 import CalcOption from './CalcOption'
-import { useRef } from 'react'
 
 const OptionsSlide = () => {
-    const bossHealthHeight = 550;
+    const bossHealthHeight = 500;
 
     const handleScroll = () => {
         window.scrollTo({
