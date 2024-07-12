@@ -118,7 +118,7 @@ const BossHealth = () => {
                 rounded={"20px"}
                 bgImage={mushBG}>
             <VStack>
-                <Text fontSize={"16px"}>
+                <Text fontSize={"22px"}>
                     Boss Health Calculator
                 </Text>
                 <HStack>
