@@ -21,13 +21,48 @@ const errorAnim = keyframes `
 
 const BossHealth = () => {
     const [players, setPlayers] = useState(0);
+    const [bossHealth, setBossHealth] = useState(0);
+    const [multiplayerFactor, setMultiplayerFactor] = useState(0);
     const [boss, setBoss] = useState("eye");
     const [difficulty, setDifficulty] = useState("");
-    const [bossHealth, setBossHealth] = useState(0);
     const [error, setError] = useState("");
 
     const changePlayers = (plyrs: string) => {
         const newPlayers = parseInt(plyrs);
+
+        switch(newPlayers) {
+            case 1:
+                setMultiplayerFactor(1);
+            break;
+            case 2:
+                setMultiplayerFactor(0.35);
+            break;
+            case 3:
+                setMultiplayerFactor(0.9165);
+            break;
+            case 4:
+                setMultiplayerFactor(1.6275);
+            break;
+            case 5:
+                setMultiplayerFactor(2.435);
+            break;
+            case 6:
+                setMultiplayerFactor(3.3065);
+            break;
+            case 7:
+                setMultiplayerFactor(4.221);
+            break;
+            case 8:
+                setMultiplayerFactor(5.164);
+            break;
+            case 9:
+                setMultiplayerFactor(6.25);
+            break;
+
+            default:
+                setMultiplayerFactor(newPlayers * 0.75);
+        }
+
         setPlayers(newPlayers);
     }
 
@@ -40,18 +75,30 @@ const BossHealth = () => {
             setError("Select the amount of players!");
             return;
         }
+        else if (players > 8 && players < 100) {
+            setError("Results may not be accurate past 8 players!");
+        }
+        else if (players >= 100 && players < 255) {
+            setError("Are you seriously playing over 100 players?...");
+        }
+        else if (players >= 255) {
+            setError("Well that sure is a lot of players!");
+        }
         
         switch(difficulty) {
             case "classic":
                 setBossHealth(bosses[boss].health);
+                // clasic mode doesn't update boss health based on multiplayerFactor
             break;
 
             case "expert":
-                setBossHealth(bosses[boss].healthExpert);
+                const healthExpert = bosses[boss].healthExpert * multiplayerFactor + bosses[boss].healthExpert;
+                setBossHealth(Math.ceil(healthExpert));
             break;
 
             case "master":
-                setBossHealth(bosses[boss].healthMaster);
+                const healthMaster = bosses[boss].healthMaster * multiplayerFactor + bosses[boss].healthMaster;
+                setBossHealth(Math.ceil(healthMaster));
             break;
         }
     }
