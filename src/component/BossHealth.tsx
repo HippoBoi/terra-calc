@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, HStack, Input, keyframes, Spinner, Text, VStack } from '@chakra-ui/react'
+import { Button, Card, CardBody, HStack, Input, keyframes, Text, VStack } from '@chakra-ui/react'
 import BossList, { bosses } from './BossList'
 import DifficultyList from './DifficultyList'
 import mushBG from "../assets/images/mushBG.webp"
@@ -26,6 +26,7 @@ const BossHealth = () => {
     const [boss, setBoss] = useState("eye");
     const [difficulty, setDifficulty] = useState("");
     const [error, setError] = useState("");
+    const [animSpeed, setAnimSpeed] = useState(0);
 
     const changePlayers = (plyrs: string) => {
         const newPlayers = parseInt(plyrs);
@@ -67,6 +68,8 @@ const BossHealth = () => {
     }
 
     const calculateHealth = () => {
+        setAnimSpeed(4);
+
         if (difficulty === "") {
             setError("Select difficulty!");
             return;
