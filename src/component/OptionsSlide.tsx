@@ -26,7 +26,7 @@ const OptionsSlide = () => {
     
     return (
         <VStack>
-            <Text fontSize={"18"}>what do you wish to calc?</Text>
+            <Text fontSize={"18"} color={"white"}>what do you wish to calc?</Text>
             <HStack>
                 <CalcOption name='Boss Health' image={beeImg} imageGif={beeGif} bgImage={caveBg} onClick={handleScroll} />
                 <CalcOption name='Damage' image={empressImg} imageGif={empressGif} bgImage={caveBg} width='200px' height='120px' onClick={handleScroll} />

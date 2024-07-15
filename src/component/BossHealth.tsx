@@ -118,21 +118,21 @@ const BossHealth = () => {
                 rounded={"20px"}
                 bgImage={mushBG}>
             <VStack>
-                <Text fontSize={"22px"}>
+                <Text color={"white"} fontSize={"22px"}>
                     Boss Health Calculator
                 </Text>
                 <HStack>
-                    <Card padding={2} height={"80px"} bgColor={"purple.900"}>
+                    <Card color={"white"} padding={2} height={"80px"} bgColor={"purple.900"}>
                         <Text>Amount of players</Text>
                         <Input type="number" placeholder='1...' onChange={(event) => changePlayers(event.target.value)}></Input>
                     </Card>
 
-                    <Card padding={2} height={"80px"} bgColor={"purple.900"}>
+                    <Card color={"white"} padding={2} height={"80px"} bgColor={"purple.900"}>
                         <Text>Boss</Text>
                         <BossList onChange={(newBoss) => setBoss(newBoss)} />
                     </Card>
 
-                    <Card padding={2} height={"80px"} bgColor={"purple.900"}>
+                    <Card color={"white"} padding={2} height={"80px"} bgColor={"purple.900"}>
                         <Text>Difficulty</Text>
                         <DifficultyList onChange={(newDiff) => setDifficulty(newDiff)} />
                     </Card>
@@ -141,6 +141,7 @@ const BossHealth = () => {
                 {error && <Text animation={`${errorAnim} 2s infinite cubic-bezier(0.5, 0.1, 0.1, 0.1)`} color={"red.400"}>{error}</Text>}
 
                 <Button 
+                    color={"white"}
                     onClick={calculateHealth}
                     bg={"transparent"}
                     fontSize={"25px"}
@@ -155,6 +156,7 @@ const BossHealth = () => {
                 </Button>
 
                 <Text 
+                    color={"white"}
                     fontSize={"18px"} 
                     marginTop={"20px"}>
                     Total Health: 
